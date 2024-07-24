@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Área de Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #08074b;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 400px;
+            margin: 100px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #666;
+        }
+        input[type="text"], input[type="password"] {
+            width: calc(100% - 20px);
+            padding: 8px 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .error-message {
+            color: #d9534f;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Área de Login</h2>
+    
+    <form id="loginForm" action="#" method="post" onsubmit="return validateForm()">
+        <label for="username">Usuário:</label>
+        <input type="text" id="username" name="username" required>
+        
+        <label for="password">Senha:</label>
+        <input type="password" id="password" name="password" required>
+        
+        <input type="submit" value="Login">
+        
+        <p class="error-message" id="errorMessage"></p>
+    </form>
+</div>
+
+<script>
+    function validateForm() {
+        var username = document.getElementById("username").value;
+        var password = document.getElementById("password").value;
+
+        // Dados de login para diferentes usuários
+        var users = [
+            { username: "usuario1", password: "senha1", redirectUrl: "https://my.microsoftpersonalcontent.com/personal/db9cb6ba87e45990/_layouts/15/Doc.aspx?sourcedoc=%7B87e45990-b6ba-209c-80db-8e0000000001%7D&action=default" },
+            { username: "usuario2", password: "senha2", redirectUrl: "https://my.microsoftpersonalcontent.com/personal/db9cb6ba87e45990/_layouts/15/Doc.aspx?sourcedoc=%7B87e45990-b6ba-209c-80db-8e0000000002%7D&action=default" },
+            { username: "usuario3", password: "senha3", redirectUrl: "https://my.microsoftpersonalcontent.com/personal/db9cb6ba87e45990/_layouts/15/Doc.aspx?sourcedoc=%7B87e45990-b6ba-209c-80db-8e0000000003%7D&action=default" },
+            { username: "usuario4", password: "senha4", redirectUrl: "https://my.microsoftpersonalcontent.com/personal/db9cb6ba87e45990/_layouts/15/Doc.aspx?sourcedoc=%7B87e45990-b6ba-209c-80db-8e0000000004%7D&action=default" },
+            { username: "usuario5", password: "senha5", redirectUrl: "https://my.microsoftpersonalcontent.com/personal/db9cb6ba87e45990/_layouts/15/Doc.aspx?sourcedoc=%7B87e45990-b6ba-209c-80db-8e0000000005%7D&action=default" },
+            { username: "usuario6", password: "senha6", redirectUrl: "https://my.microsoftpersonalcontent.com/personal/db9cb6ba87e45990/_layouts/15/Doc.aspx?sourcedoc=%7B87e45990-b6ba-209c-80db-8e0000000006%7D&action=default" },
+            { username: "usuario7", password: "senha7", redirectUrl: "https://my.microsoftpersonalcontent.com/personal/db9cb6ba87e45990/_layouts/15/Doc.aspx?sourcedoc=%7B87e45990-b6ba-209c-80db-8e0000000007%7D&action=default" }
+        ];
+
+        // Verifica se o usuário e senha correspondem aos dados de algum usuário
+        for (var i = 0; i < users.length; i++) {
+            if (username === users[i].username && password === users[i].password) {
+                // Redirecionar para o URL correspondente ao usuário
+                window.location.href = users[i].redirectUrl;
+                return false; // Evitar o envio do formulário
+            }
+        }
+
+        // Se nenhum usuário corresponder, exibe mensagem de erro
+        var errorMessage = document.getElementById("errorMessage");
+        errorMessage.textContent = "Usuário ou senha incorretos.";
+        return false;
+    }
+</script>
+
+</body>
+</html>
